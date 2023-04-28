@@ -5,6 +5,11 @@
 @import 'colors/light-syntax';
 @import 'colors/dark-syntax';
 
+div.highlight,
+pre.highlight {
+    border-radius: 5px;
+}
+
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
