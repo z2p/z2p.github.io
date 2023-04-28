@@ -1647,7 +1647,8 @@ $sidebar-display: 'sidebar-display';
   #topbar,
   #main,
   footer > .container {
-    max-width: $main-content-max-width;
+    // max-width: $main-content-max-width;
+    max-width: 2550px;
   }
 
   #core-wrapper,
