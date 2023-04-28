@@ -22,10 +22,10 @@ timezone: Asia/Shanghai
 
 title: z2p's blog # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: 网络安全、阅读｜CyberSecurity、Reading # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  z2p's Blog, a cyber security researcher
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ""
@@ -55,7 +55,7 @@ google_site_verification: # fill in to your verification string
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: # fill in your Google Analytics ID
+  id: G-32P72Q501V # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
