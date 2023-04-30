@@ -26,6 +26,11 @@ tail_includes:
     </span>
     {% endif %}
 
+    <!-- 单篇文章访问数量 -->
+    <span id="busuanzi_container_page_pv">  
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+
   {% if page.image %}
     {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
     {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
