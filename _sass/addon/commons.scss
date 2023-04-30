@@ -1631,11 +1631,13 @@ $sidebar-display: 'sidebar-display';
 @media all and (min-width: 1650px) {
   #main-wrapper,
   footer {
-    margin-left: $sidebar-width-large;
+    // margin-left: $sidebar-width-large;
+    margin-left: 280px;
   }
 
   #topbar-wrapper {
-    left: $sidebar-width-large;
+    // left: $sidebar-width-large;
+    left: 280px;
   }
 
   #search-wrapper {
