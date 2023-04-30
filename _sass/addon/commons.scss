@@ -959,8 +959,7 @@ $sidebar-display: 'sidebar-display';
   height: $topbar-height;
   position: fixed;
   top: 0;
-  // left: $sidebar-width; /* same as sidebar width */
-  left: 300px; // 做过修改
+  left: $sidebar-width; /* same as sidebar width */
   right: 0;
   transition: top 0.2s ease-in-out;
   z-index: 50;
@@ -1471,8 +1470,7 @@ $sidebar-display: 'sidebar-display';
 
   #main-wrapper,
   footer {
-    // margin-left: $sidebar-width;
-    margin-left: 300px; // 做过修改
+    margin-left: $sidebar-width;
   }
 
   .profile-wrapper {
@@ -1629,7 +1627,6 @@ $sidebar-display: 'sidebar-display';
     right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
   }
 }
-
 
 @media all and (min-width: 1650px) {
   #main-wrapper,
