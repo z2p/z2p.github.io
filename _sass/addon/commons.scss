@@ -999,7 +999,8 @@ $sidebar-display: 'sidebar-display';
 
 #sidebar-trigger,
 #search-trigger {
-  display: none;
+  // display: none;
+  display: flex;
 }
 
 #search-wrapper {
