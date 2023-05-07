@@ -20,7 +20,7 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: z2p's blog ｜ 网络安全、阅读 # the main title
+title: z2p's blog # the main title
 
 tagline: 网络安全、阅读｜CyberSecurity、Reading # it will display as the sub-title
 
