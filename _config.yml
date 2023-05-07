@@ -20,12 +20,12 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: z2p's blog # the main title
+title: z2p's blog ｜ 网络安全、阅读 # the main title
 
 tagline: 网络安全、阅读｜CyberSecurity、Reading # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  z2p's Blog, a cyber security researcher
+  z2p's Blog, 一个网络安全研究人员 ｜ a cyber security researcher
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ""
@@ -72,7 +72,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: #[light,dark]
+theme_mode: dark #[light,dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
