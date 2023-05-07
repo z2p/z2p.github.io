@@ -1347,7 +1347,7 @@ $sidebar-display: 'sidebar-display';
   }
 }
 
-/* hide sidebar and panel */
+/* hide sidebar and panel 隐藏sidebar */
 @media all and (max-width: 849px) {
   @mixin slide($append: null) {
     $basic: transform 0.4s ease;
@@ -1505,17 +1505,54 @@ $sidebar-display: 'sidebar-display';
   }
 }
 
-/* Pad horizontal */
+/* Pad horizontal ipad大小 */
 @media all and (min-width: 992px) and (max-width: 1199px) {
   #main .col-lg-11 {
-    flex: 0 0 96%;
-    max-width: 96%;
+    flex: 0 0 99%;
+    max-width: 99%;
   }
+  
+  
 }
 
-/* Compact icons in sidebar & panel hidden */
+/* Compact icons in sidebar & panel hidden  ipad大小 */
 @media all and (min-width: 850px) and (max-width: 1199px) {
+
+  /*test*/
+  // @mixin slide($append: null) {
+  //   $basic: transform 0.4s ease;
+
+  //   @if $append {
+  //     transition: $basic, $append;
+  //   } @else {
+  //     transition: $basic;
+  //   }
+  // }
+  // [#{$sidebar-display}] {
+  //   #sidebar {
+  //     -webkit-transform: translateX(0);
+  //     transform: translateX(0);
+  //   }
+  // }
+
+  // #sidebar-trigger {
+  //   display: block;
+  // }
+  /*test*/
+
   #sidebar {
+    
+    /*test*/
+    // @include slide;
+
+    // transform: translateX(-#{$sidebar-width-small}); /* hide */
+    // -webkit-transform: translateX(-#{$sidebar-width-small});
+
+    // .cursor {
+    //   transition: none;
+    // }
+    /*test*/
+
     width: $sidebar-width-small;
 
     .site-subtitle {
@@ -1577,6 +1614,8 @@ $sidebar-display: 'sidebar-display';
   #main > div.row {
     justify-content: center !important;
   }
+
+  
 }
 
 /* --- desktop mode, both sidebar and panel are visible --- */
@@ -1620,11 +1659,30 @@ $sidebar-display: 'sidebar-display';
       width: 85%;
     }
   }
+
+  
 }
 
 @media all and (min-width: 1400px) {
   #back-to-top {
     right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
+  }
+
+  /*优化ipad缩小的情况下，文字布局*/
+  #topbar,
+  #main,
+  footer > .container {
+    max-width: 1350px;
+  }
+
+  #core-wrapper {
+    flex: 0 0 80%;
+    max-width: 80%;
+  }
+
+  #panel-wrapper {
+    flex: 0 0 20%;
+    max-width: 20%;
   }
 }
 
@@ -1656,6 +1714,16 @@ $sidebar-display: 'sidebar-display';
   #core-wrapper,
   #tail-wrapper {
     padding-right: 1.5rem !important;
+  }
+
+  #core-wrapper {
+    flex: 0 0 82%;
+    max-width: 82%;
+  }
+
+  #panel-wrapper {
+    flex: 0 0 18%;
+    max-width: 18%;
   }
 
   #back-to-top {
