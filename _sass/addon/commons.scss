@@ -1459,6 +1459,12 @@ $sidebar-display: 'sidebar-display';
   footer .d-flex > div {
     width: 312px;
   }
+
+
+  #panel-wrapper {
+    // display: none; // 设置右边导航栏是否显示
+    display: block;
+  }
 }
 
 /* Sidebar is visible */
@@ -1503,10 +1509,12 @@ $sidebar-display: 'sidebar-display';
   #topbar-title {
     text-align: left;
   }
+
 }
 
 /* Pad horizontal ipad大小 */
-@media all and (min-width: 992px) and (max-width: 1199px) {
+// @media all and (min-width: 992px) and (max-width: 1199px) {
+@media all and (min-width: 900px) and (max-width: 1199px) {
   #main .col-lg-11 {
     flex: 0 0 75%;
     max-width: 75%;
@@ -1615,6 +1623,7 @@ $sidebar-display: 'sidebar-display';
     word-break: keep-all;
     white-space: nowrap;
   }
+
 }
 
 /* panel hidden */
