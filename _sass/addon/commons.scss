@@ -1508,11 +1508,16 @@ $sidebar-display: 'sidebar-display';
 /* Pad horizontal ipad大小 */
 @media all and (min-width: 992px) and (max-width: 1199px) {
   #main .col-lg-11 {
-    // flex: 0 0 99%;
-    // max-width: 99%;
-
     flex: 0 0 75%;
     max-width: 75%;
+
+    // flex: 0 0 75%;
+    // max-width: 75%;
+  }
+
+  .col-xl-3 {
+    flex: 0 0 25%;
+    max-width: 0 0 25%;
   }
   
   
@@ -1521,6 +1526,10 @@ $sidebar-display: 'sidebar-display';
 /* Compact icons in sidebar & panel hidden  ipad大小 */
 @media all and (min-width: 850px) and (max-width: 1199px) {
 
+  // .col-xl-3 {
+  //   flex: 0 0 25%;
+  //   max-width: 0 0 25%;
+  // }
   /*test*/
   // @mixin slide($append: null) {
   //   $basic: transform 0.4s ease;
@@ -1611,7 +1620,8 @@ $sidebar-display: 'sidebar-display';
 /* panel hidden */
 @media all and (max-width: 1199px) {
   #panel-wrapper {
-    display: none;
+    // display: none; // 设置右边导航栏是否显示
+    display: block;
   }
 
   #main > div.row {
@@ -1624,6 +1634,9 @@ $sidebar-display: 'sidebar-display';
 /* --- desktop mode, both sidebar and panel are visible --- */
 
 @media all and (min-width: 1200px) {
+
+  
+
   #back-to-top {
     bottom: 6.5rem;
   }
