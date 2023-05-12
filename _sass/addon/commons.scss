@@ -1508,8 +1508,11 @@ $sidebar-display: 'sidebar-display';
 /* Pad horizontal ipad大小 */
 @media all and (min-width: 992px) and (max-width: 1199px) {
   #main .col-lg-11 {
-    flex: 0 0 99%;
-    max-width: 99%;
+    // flex: 0 0 99%;
+    // max-width: 99%;
+
+    flex: 0 0 75%;
+    max-width: 75%;
   }
   
   
