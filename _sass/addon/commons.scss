@@ -1282,6 +1282,11 @@ $sidebar-display: 'sidebar-display';
 */
 
 @media all and (max-width: 576px) {
+
+  #toc-wrapper{
+    display: none;
+  }
+
   footer {
     height: $footer-height-mobile;
 
@@ -1349,6 +1354,11 @@ $sidebar-display: 'sidebar-display';
 
 /* hide sidebar and panel 隐藏sidebar */
 @media all and (max-width: 849px) {
+
+  #toc-wrapper{
+    display: none;
+  }
+
   @mixin slide($append: null) {
     $basic: transform 0.4s ease;
 
@@ -1468,7 +1478,7 @@ $sidebar-display: 'sidebar-display';
 }
 
 /* Sidebar is visible */
-@media all and (min-width: 850px) {
+@media all and (min-width: 899px) {
   /* Solved jumping scrollbar */
   html {
     overflow-y: scroll;
