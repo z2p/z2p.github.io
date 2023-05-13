@@ -2,6 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+title: 关于
 ---
 Hello，这是我的个人博客，在2023年4月28号正式开通上线。
 
