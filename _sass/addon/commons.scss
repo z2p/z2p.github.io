@@ -763,6 +763,7 @@ $sidebar-display: 'sidebar-display';
     img {
       width: 100%;
       height: 100%;
+      max-width: 100%;
       transition: -webkit-transform 0.5s;
       transition: transform 0.5s;
       transition: transform 0.5s, -webkit-transform 0.5s;
@@ -1285,6 +1286,7 @@ $sidebar-display: 'sidebar-display';
 
 */
 
+// 手机
 @media all and (max-width: 576px) {
 
   #toc-wrapper{
@@ -1341,6 +1343,7 @@ $sidebar-display: 'sidebar-display';
   }
 }
 
+// 手机
 @media all and (max-width: 768px) {
   %full-width {
     max-width: 100%;
@@ -1357,7 +1360,7 @@ $sidebar-display: 'sidebar-display';
 }
 
 /* hide sidebar and panel 隐藏sidebar */
-@media all and (max-width: 849px) {
+@media all and (max-width: 899px) {
 
   #toc-wrapper{
     display: none;
@@ -1472,11 +1475,6 @@ $sidebar-display: 'sidebar-display';
   }
 } /* max-width: 849px */
 
-// @media all and (max-width: 849px) and (orientation: portrait) {
-//   [data-topbar-visible='false'] #topbar-wrapper {
-//     top: 0;
-//   }
-// }
 
 /* Phone & Pad */
 @media all and (min-width: 577px) and (max-width: 1199px) {
@@ -1484,14 +1482,12 @@ $sidebar-display: 'sidebar-display';
     width: 312px;
   }
 
-
   #panel-wrapper {
-    // display: none; // 设置右边导航栏是否显示
-    display: block;
+    display: block; // 设置右边导航栏是否显示
   }
 }
 
-/* Sidebar is visible */
+/* Sidebar is visible 左边栏可见 */
 @media all and (min-width: 899px) {
   /* Solved jumping scrollbar */
   html {
@@ -1537,6 +1533,15 @@ $sidebar-display: 'sidebar-display';
 
 }
 
+/* panel hidden 小于1200的话，右边导航栏消失 */
+@media all and (max-width: 1199px) {
+  
+  #main > div.row {
+    // justify-content: center !important;
+    justify-content: left !important;
+  }
+}
+
 /* Pad horizontal ipad大小 */
 // @media all and (min-width: 992px) and (max-width: 1199px) {
 @media all and (min-width: 900px) and (max-width: 1199px) {
@@ -1557,15 +1562,15 @@ $sidebar-display: 'sidebar-display';
 
   .row{
     display: flex;
-    // display: flex;
-  //   // margin-right: 15px;
-  //   // margin-left: 15px;
-    // flex-wrap: nowrap;
   }
 
   #sidebar {
-    
     width: $sidebar-width-small;
+    top: 58px;
+    height: 96.5%;
+
+    background-color: #ffffff;
+    border-right: 1px solid var(--main-border-color);
 
     .site-subtitle {
       margin-left: 1rem;
@@ -1616,20 +1621,82 @@ $sidebar-display: 'sidebar-display';
     white-space: nowrap;
   }
 
+  // 折叠后铺满
+  .row {
+    width: 100%;
+  }
+
+  #topbar-wrapper {
+    // left: $sidebar-width-large;
+    // left: 280px;
+    left: 0px;
+    height: 3.5rem;
+  }
+
+  /*test*/
+  @mixin slide($append: null) {
+    $basic: transform 0.4s ease;
+
+    @if $append {
+      transition: $basic, $append;
+    } @else {
+      transition: $basic;
+    }
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  // $extra-width: 72px;
+  $extra-width: 0px;
+
+  [#{$sidebar-display}] {
+    #sidebar {
+      -webkit-transform: translateX(-#{$sidebar-width - $extra-width});
+      transform: translateX(-#{$sidebar-width - $extra-width});
+    }
+
+    footer {
+      -webkit-transform: translateX(-#{$sidebar-width});
+      transform: translateX(-#{$sidebar-width});
+      width: 100%;
+    }
+
+    #main-wrapper{
+      -webkit-transform: translateX(-#{$sidebar-width});
+      transform: translateX(-#{$sidebar-width});
+      width: 100%;
+    }
+
+  }
+
+  #sidebar {
+    @include slide;
+
+    transform: translateX(0); /* show */
+    -webkit-transform: translateX(0);
+
+    .cursor {
+      transition: none;
+    }
+  }
+
+  #main-wrapper {
+    @include slide;
+    padding-top: $topbar-height;
+  }
+
+  #core-wrapper,
+  #panel-wrapper {
+    margin-top: 0;
+  }
+  /*test*/
 }
 
-/* panel hidden */
-@media all and (max-width: 1199px) {
-  
-  #main > div.row {
-    // justify-content: center !important;
-    justify-content: left !important;
-  }
-  
-}
 
 /* --- desktop mode, both sidebar and panel are visible --- */
-
 @media all and (min-width: 1200px) {
 
   /*test*/
@@ -1732,13 +1799,37 @@ $sidebar-display: 'sidebar-display';
     }
   }
 
-  
+  // 折叠后铺满
+  .row {
+    width: 100%;
+  }
+
+  #topbar-wrapper {
+    // left: $sidebar-width-large;
+    // left: 280px;
+    left: 0px;
+    height: 3.5rem;
+  }
+
+  #sidebar {
+    // width: $sidebar-width-large;
+    width: 280px;
+    top: 58px;
+    height: 96.5%;
+
+    background-color: #ffffff;
+    border-right: 1px solid var(--main-border-color);
+  }
+
+
 }
 
 @media all and (min-width: 1400px) {
   #back-to-top {
     right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
   }
+
+  
 
   /*优化ipad缩小的情况下，文字布局*/
   #topbar,
@@ -1756,6 +1847,8 @@ $sidebar-display: 'sidebar-display';
     flex: 0 0 20%;
     max-width: 20%;
   }
+
+  
 }
 
 @media all and (min-width: 1650px) {
@@ -1765,17 +1858,6 @@ $sidebar-display: 'sidebar-display';
     margin-left: 280px;
   }
 
-  .row {
-    width: 100%;
-    
-  }
-
-  #topbar-wrapper {
-    // left: $sidebar-width-large;
-    // left: 280px;
-    left: 0px;
-    height: 3.5rem;
-  }
 
   #search-wrapper {
     margin-right: calc(
