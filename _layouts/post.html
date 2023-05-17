@@ -52,13 +52,15 @@ tail_includes:
   <div class="d-flex justify-content-between">
     <!-- author(s) -->
     <span>
+      <i class="fas fa-user-circle"></i>
       {% if page.author %}
         {% assign authors = page.author %}
       {% elsif page.authors %}
         {% assign authors = page.authors %}
       {% endif %}
 
-      {{ site.data.locales[site.lang].post.written_by }}
+      <!-- 「作者」-->
+      <!-- {{ site.data.locales[site.lang].post.written_by }} -->
 
       <em>
       {% if authors %}
