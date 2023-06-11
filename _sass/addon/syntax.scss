@@ -71,9 +71,18 @@ html {
   }
 
   table {
+    border-left: 0px;
+    border-top: 0px;
+
     td pre {
       overflow: visible; /* Fixed iOS safari overflow-x */
       word-break: normal; /* Fixed iOS safari linenos code break */
+    }
+
+    td {
+      border-left: 0px;
+      border-right: 0px;
+      border-bottom: 0px;
     }
   }
 
@@ -126,6 +135,7 @@ code {
   .highlight > & {
     color: transparent;
   }
+
 }
 
 td.rouge-code {
@@ -183,6 +193,7 @@ div {
     box-shadow: ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
       ($dot-size + $dot-margin) * 2 0 0 var(--code-header-muted-color);
   }
+
 
   /* the label block */
   span {

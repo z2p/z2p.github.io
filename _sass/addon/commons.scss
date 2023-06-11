@@ -262,20 +262,15 @@ i {
   }
 
   .post-tag {
-    display: inline-block;
-    line-height: 1rem;
+    line-height: 1.05rem;
     font-size: 0.85rem;
-    background: none;
     border: 1px solid var(--btn-border-color);
     border-radius: 0.8rem;
     padding: 0.3rem 0.5rem;
     margin: 0 0.35rem 0.5rem 0;
 
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
-      color: #ffffff;
-      transition: none;
+      transition: all 0.3s ease-in;
     }
   }
 
@@ -1710,8 +1705,9 @@ $sidebar-display: 'sidebar-display';
     }
   }
 
-  html,
-  body {
+  /* 会引发toc在下滑的情况下不展示的问题 */
+  // body,
+  html {
     overflow-x: hidden;
   }
 
@@ -1878,13 +1874,13 @@ $sidebar-display: 'sidebar-display';
   }
 
   #core-wrapper {
-    flex: 0 0 82%;
-    max-width: 82%;
+    flex: 0 0 80%;
+    max-width: 80%;
   }
 
   #panel-wrapper {
-    flex: 0 0 18%;
-    max-width: 18%;
+    flex: 0 0 20%;
+    max-width: 20%;
   }
 
   #back-to-top {
