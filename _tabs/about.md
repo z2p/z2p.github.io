@@ -1,9 +1,9 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
-order: 4
 title: 关于
+icon: icon-info
+order: 5
 ---
+
 Hello，这是我的个人博客，在2023年4月28号正式开通上线。
 
 我是一名网络安全从业人员，参与过攻防类的实战演练、安全类工具研发，可以说是整个生命周期都涉猎了一些。

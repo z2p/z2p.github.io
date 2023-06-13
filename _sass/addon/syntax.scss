@@ -5,8 +5,6 @@
 @import 'colors/light-syntax';
 @import 'colors/dark-syntax';
 
-
-
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
@@ -34,7 +32,7 @@ html {
 /* -- code snippets -- */
 
 %code-snippet-bg {
-  background: var(--highlight-bg-color);
+  background-color: var(--highlight-bg-color);
 }
 
 %code-snippet-padding {
@@ -43,12 +41,16 @@ html {
 }
 
 .highlighter-rouge {
-  @extend %code-snippet-bg;
-  @extend %rounded;
-
   color: var(--highlighter-rouge-color);
   margin-top: 0.5rem;
   margin-bottom: 1.2em; /* Override BS Inline-code style */
+  position: relative;
+}
+
+.language-sh {
+  pre {
+    font-variant-ligatures: none !important;
+  }
 }
 
 .highlight {
@@ -64,6 +66,8 @@ html {
   padding-bottom: 1rem;
 
   pre {
+    font-family: "Fira Code", "Microsoft Yahei", monospace;
+    font-variant-ligatures: normal;
     margin-bottom: 0;
     font-size: $code-font-size;
     line-height: 1.4rem;
@@ -71,18 +75,11 @@ html {
   }
 
   table {
-    border-left: 0px;
-    border-top: 0px;
-
     td pre {
+      font-family: "Fira Code", "Microsoft Yahei", monospace;
+      font-variant-ligatures: normal;
       overflow: visible; /* Fixed iOS safari overflow-x */
       word-break: normal; /* Fixed iOS safari linenos code break */
-    }
-
-    td {
-      border-left: 0px;
-      border-right: 0px;
-      border-bottom: 0px;
     }
   }
 
@@ -103,9 +100,11 @@ code {
   -webkit-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  font-family: "Fira Code", "Microsoft Yahei", monospace;
+  font-variant-ligatures: none;
 
   &.highlighter-rouge {
-    font-size: $code-font-size;
+    // font-size: $code-font-size;
     padding: 3px 5px;
     word-break: break-word;
     border-radius: 4px;
@@ -131,11 +130,6 @@ code {
   blockquote & {
     color: inherit;
   }
-
-  .highlight > & {
-    color: transparent;
-  }
-
 }
 
 td.rouge-code {
@@ -152,13 +146,25 @@ td.rouge-code {
   }
 }
 
+div[class^='language-'] {
+  @extend %rounded;
+  @extend %code-snippet-bg;
+
+  box-shadow: var(--language-border-color) 0 0 0 1px;
+
+  .post-content > & {
+    @include ml-mr(-1.25rem);
+
+    border-radius: 0;
+  }
+}
+
 /* Hide line numbers for default, console, and terminal code snippets */
 div {
-  &[class^='highlighter-rouge'],
   &.nolineno,
-  &.language-plaintext.highlighter-rouge,
-  &.language-console.highlighter-rouge,
-  &.language-terminal.highlighter-rouge {
+  &.language-plaintext,
+  &.language-console,
+  &.language-terminal {
     pre.lineno {
       display: none;
     }
@@ -178,29 +184,15 @@ div {
   justify-content: space-between;
   align-items: center;
   height: $code-header-height;
-
-  &::before {
-    $dot-size: 0.75rem;
-    $dot-margin: 0.5rem;
-
-    content: '';
-    display: inline-block;
-    margin-left: 1rem;
-    width: $dot-size;
-    height: $dot-size;
-    border-radius: 50%;
-    background-color: var(--code-header-muted-color);
-    box-shadow: ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
-      ($dot-size + $dot-margin) * 2 0 0 var(--code-header-muted-color);
-  }
-
+  margin-left: 1rem;
+  margin-right: 0.5rem;
 
   /* the label block */
   span {
     /* label icon */
     i {
       font-size: 1rem;
-      margin-right: 0.4rem;
+      margin-right: 0.5rem;
       color: var(--code-header-icon-color);
 
       &.small {
@@ -258,24 +250,42 @@ div {
         color: white;
       }
     }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.button-run-code {
+      position: absolute;
+      right: 2.25rem;
+    }
   }
 }
 
-@media all and (max-width: 576px) {
-  .post-content {
-    > div[class^='language-'] {
-      @include ml-mr(-1.25rem);
+@media all and (min-width: 576px) {
+  div[class^='language-'] {
+    .post-content > & {
+      @include ml-mr(0);
 
-      border-radius: 0;
+      border-radius: $base-radius;
+    }
 
-      .highlight {
-        padding-left: 0.25rem;
-      }
+    .code-header {
+      @include ml-mr(0);
 
-      .code-header {
-        border-radius: 0;
-        padding-left: 0.4rem;
-        padding-right: 0.5rem;
+      &::before {
+        $dot-size: 0.75rem;
+        $dot-margin: 0.5rem;
+
+        content: '';
+        display: inline-block;
+        margin-left: 1rem;
+        width: $dot-size;
+        height: $dot-size;
+        border-radius: 50%;
+        background-color: var(--code-header-muted-color);
+        box-shadow: ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
+          ($dot-size + $dot-margin) * 2 0 0 var(--code-header-muted-color);
       }
     }
   }

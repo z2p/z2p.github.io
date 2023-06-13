@@ -1,5 +1,4 @@
-
-
+<!-- The Head -->
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,9 +11,6 @@
     content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
 
-  <script src="/assets/js/busuanzi.pure.mini.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6461945515186473" crossorigin="anonymous"></script>
-  
   {% if page.layout == 'home' or page.layout == 'post' %}
     {% if site.google_analytics.pv.proxy_endpoint %}
       <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
@@ -54,23 +50,23 @@
 
   <title>
     {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
+    {{ page.title | flatify | append: ' | '}}
     {%- endunless -%}
-    {{ site.title }}
+    {{ site.title | flatify }}
   </title>
 
   {% include favicons.html %}
 
   {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
-    <link href="{{ site.data.assets[origin].webfonts | relative_url }}" rel="stylesheet">
+    <link href="{{ site.data.origin[type].webfonts | relative_url }}" rel="stylesheet">
 
   {% else %}
-    {% for cdn in site.data.assets[origin].cdns %}
+    {% for cdn in site.data.origin[type].cdns %}
       <link rel="preconnect" href="{{ cdn.url }}" {{ cdn.args }}>
       <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
     {% endfor %}
 
-    <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts | relative_url }}">
+    <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
   {% endif %}
 
   <!-- GA -->
@@ -78,8 +74,8 @@
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     {% if site.google_analytics.pv.proxy_endpoint %}
       {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
@@ -94,47 +90,43 @@
   {% endif %}
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css | relative_url}}">
+  <link rel="stylesheet" href="{{ site.data.origin[type].bootstrap.css | relative_url}}">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css | relative_url }}">
+  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
-  {% if site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.data.assets[origin].toc.css | relative_url }}">
+  <!-- icon font -->
+  {% if site.data.origin[type].iconfont.css %}
+  {% for css in site.data.origin[type].iconfont.css %}
+  <link rel="stylesheet" href="{{ css | relative_url }}">
+  {% endfor %}
+  {% endif %}
+  
+  <!-- Fira Code -->
+  <link rel="stylesheet" href="{{ site.data.origin[type].firacode.css | relative_url }}">
+
+  {% if site.panel.post.toc and page.toc %}
+    <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
 
   {% if page.layout == 'page' or page.layout == 'post' %}
     <!-- Manific Popup -->
-    <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css | relative_url }}">
+    <link rel="stylesheet" href="{{ site.data.origin[type].magnific-popup.css | relative_url }}">
   {% endif %}
 
   <!-- JavaScript -->
 
-  <script src="{{ site.data.assets[origin].jquery.js | relative_url }}"></script>
+  <script async src="{{ site.data.origin[type].socket-io-client.js | relative_url }}"></script>
+
+  {% if site.mouse_click_effect %}
+    <script async src="/assets/js/lib/fireworks.js"></script>
+  {% endif %}
 
   {% unless site.theme_mode %}
     {% include mode-toggle.html %}
   {% endunless %}
 
- 
-  <!-- The Head -->
-  <style>
-    table{
-      border-left:1px solid #000000;border-top:1px solid #000000;
-      width: 100%;
-      word-wrap:break-word; word-break:break-all;
-    }
-    table th{
-    text-align:center;
-    }
-    table th,td{
-      border-right:1px solid #000000;border-bottom:1px solid #000000;
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #F5F5F5;
-    }
-  </style>
+  {% include metadata-hook.html %}
 </head>
