@@ -13,6 +13,7 @@ tabs:
   home: Home
   subdomain: Subdomain
   categories: Categories
+  apps: apps
   tags: Tags
   archives: Archives
   about: About

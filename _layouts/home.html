@@ -42,6 +42,11 @@ refactor: true
 
 <div id="post-list">
   {% for post in posts %}
+    <!-- 新增，不展示app类型的数据在首页 -->
+    {% if post.categories contains 'app' %}
+      {% continue %}
+    {% endif %}
+
     <a href="{{ post.url | relative_url }}" class="card-wrapper">
       <div class="card post-preview flex-md-row-reverse">
         {% if post.image %}

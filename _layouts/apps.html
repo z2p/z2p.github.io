@@ -1,0 +1,92 @@
+---
+layout: page
+# All the Categories of posts
+---
+
+{% include lang.html %}
+
+{% assign HEAD_PREFIX = 'h_' %}
+{% assign LIST_PREFIX = 'l_' %}
+
+{% assign group_index = 0 %}
+
+{% assign sort_categories = site.categories | sort %}
+
+{% for category in sort_categories %}
+  {% assign category_name = category | first %}
+  {% assign posts_of_category = category | last %}
+  {% assign first_post = posts_of_category | first %}
+
+  {% if category_name == first_post.categories[0] %}
+    {% assign sub_categories = '' | split: '' %}
+
+    {% for post in posts_of_category %}
+      {% assign second_category = post.categories[1] %}
+      {% if second_category %}
+        {% unless sub_categories contains second_category %}
+          {% assign sub_categories = sub_categories | push: second_category %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign sub_categories = sub_categories | sort %}
+    {% assign sub_categories_size = sub_categories | size %}
+
+    <!-- 只显示categories里的app的信息 -->
+  {% unless category_name contains 'app' %}
+    {% continue %}
+  {% endunless %}
+
+  {% for sub_category in sub_categories %}
+    <div class="card categories">
+      <div
+        id="{{ HEAD_PREFIX }}{{ group_index }}"
+        class="card-header d-flex justify-content-between hide-border-bottom"
+      >
+        <span class="ms-2">
+          <i class="iconfont {% if sub_categories_size > 0 %}icon-FolderOpen-1{% else %}icon-folder{% endif %}"></i>
+          {% capture _sub_category_name %}{{ category_name }}-{{ sub_category }}{% endcapture %}
+          {% capture _sub_ctg_url %}/categories/{{ _sub_category_name | slugify | url_encode }}/{% endcapture %}
+          <a href="{{ _sub_ctg_url | relative_url }}" class="mx-2">{{ sub_category }}</a>
+        </span>
+
+        <!-- arrow 用来增加折叠下拉框，后面再修改 -->
+        {% if sub_categories_size > 0 %}
+          <a
+            href="#{{ LIST_PREFIX }}{{ group_index }}"
+            data-bs-toggle="collapse"
+            aria-expanded="true"
+            aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger"
+            class="category-trigger hide-border-bottom"
+          >
+            <i class="ifrot iconfont icon-angle-down"></i>
+          </a>
+        {% else %}
+          <span data-bs-toggle="collapse" class="category-trigger hide-border-bottom disabled">
+            <i class="ifrot iconfont icon-angle-right"></i>
+          </span>
+        {% endif %}
+      </div>
+      
+      <!-- 具体内容 -->
+      <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse show" aria-expanded="true">
+        <ul class="list-group">
+          {% for post in site.posts %}
+            {% if post.categories[0] contains 'app' and post.categories[1] contains sub_category%}
+              <li class="list-group-item">
+                <i class="iconfont icon-file-code"></i>
+                <a href="{{ post.url | relative_url }}" class="mx-2">{{ post.title }}</a>
+                <span class="text-muted small font-weight-light">
+                  {% include datetime.html date=post.date lang=lang %}
+                </span>
+              </li>
+            {% endif%}
+          {% endfor %}
+        </ul>
+      </div>
+      
+    </div>
+    {% assign group_index = group_index | plus: 1 %}
+  {% endfor %}
+  {% endif %}
+{% endfor %}
