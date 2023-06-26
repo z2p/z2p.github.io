@@ -1,8 +1,8 @@
 ---
-layout: apps
-title: 工具
+layout: subdomain
+title: 外链
 no_title: true
 no_post: false
 icon: icon-buywebhostingstep1domain
-order: 1
+order: 5
 ---

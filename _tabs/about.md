@@ -1,7 +1,7 @@
 ---
 title: 关于
 icon: icon-info
-order: 5
+order: 6
 ---
 
 Hello，这是我的个人博客，在2023年4月28号正式开通上线。

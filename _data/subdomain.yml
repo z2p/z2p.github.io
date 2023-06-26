@@ -3,4 +3,11 @@
 #   link: 子域名链接
 #   title: 标题
 #   description: >-
-#      描述
+#      测试
+
+-
+  # icon: peiqi.svg
+  link: https://peiqi.wgpsec.org/
+  title: PeiQi文库
+  description: >-
+     有非常多适合国内安全研究的漏洞poc

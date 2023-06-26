@@ -11,7 +11,7 @@ layout:
 tabs:
   # 格式: <无尾缀文件名>: <值>
   home: 首页
-  subdomain: 子域
+  subdomain: 外链
   categories: 分类
   apps: 工具
   tags: 标签
