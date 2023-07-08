@@ -100,6 +100,9 @@ refactor: true
                 <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
               </div>
             {% endif %}
+            
+            {% include read-time.html content=content prompt=true lang=lang %}
+
           </div>
           <!-- .post-meta -->
         </div>
