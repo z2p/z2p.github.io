@@ -102,8 +102,13 @@ refactor: true
               </div>
             {% endif %}
             
-            {% include read-time.html content=content prompt=true lang=lang %}
-
+            <div>
+              <i class="iconfont icon-shijian"></i> 
+              <span>
+                {% include read-time.html content=content prompt=true lang=lang %}
+              </span>
+            </div>
+            
           </div>
           <!-- .post-meta -->
         </div>
